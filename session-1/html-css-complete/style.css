@@ -1,0 +1,83 @@
+body {
+	/* Much thanks to https://www.gradient-animator.com/ */
+	background:purple;
+	background: linear-gradient(276deg, #bd2d98, #5d2dbd, #53d7af, #b953d7);
+	background-size: 200% 200%;
+
+	-webkit-animation: AnimationName 11s ease infinite;
+	-moz-animation: AnimationName 11s ease infinite;
+	animation: AnimationName 11s ease infinite;
+
+}
+
+
+body {
+	font-size:30px;
+	line-height: 1.4em;
+	color: white;
+}
+
+h1 {
+	font-size:120px;
+	line-height: 1.1em;
+}
+
+h2 {
+	font-size:60px;
+	line-height: 1.1em;
+	margin:1em 0 .5em;
+	clear: both;
+}
+
+a {
+	color: white;
+}
+
+ul, ol {
+	padding-left:1em;
+}
+
+ul, ol, p {
+	margin-bottom:.5em;
+}
+
+td,th {
+	padding:.5em;
+	text-align: left;
+}
+
+.main {
+	max-width:1000px;
+	margin:100px auto 0;
+}
+
+.main-pic {
+	float: right;
+}
+
+.place {
+	width:45%;
+	padding:0 2.5% 0 0;
+	float: left;
+}
+
+img {
+	max-width:100%;
+	height:auto;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
