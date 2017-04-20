@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>Paper Scissores Rock</title>
+</head>
+<body>
+	<div style="max-width:600px;margin:auto; ">
+		<p style="text-align:center;">
+		<a title="By Enzoklop (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3ARock-paper-scissors.svg"><img width="256" alt="Rock-paper-scissors" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Rock-paper-scissors.svg/256px-Rock-paper-scissors.svg.png"/></a>
+	</p>
+<h1>Let's play!</h1>
+<a onClick="paperScissorsRock()" href="#">Paper Scissors Rock</a>
+</div>
+
+
+<script>
+
+function paperScissorsRock() {
+	var choicesSelected = false;
+	var userChoice;
+	var computerChoice;
+	var winner;
+
+	var makeChoices = function() {
+		userChoice = prompt("Do you choose Rock, Paper or Scissors?").toUpperCase();
+	    computerChoice = Math.random();
+
+		if (computerChoice <= 0.33) {
+		    computerChoice = "ROCK";
+		} else if (computerChoice > 0.33 && computerChoice <= 0.66) {
+		    computerChoice = "PAPER";
+		} else if (computerChoice > 0.66) {
+		    computerChoice = "SCISSORS";
+		} 
+	}
+
+	var doChoicesMatch = function(choice1, choice2) {
+		if (choice1 === choice2) {
+	        return true;
+	    } else {
+	    	return false;
+	    }
+	}
+
+	var compare = function(choice1, choice2) {
+	    
+	    
+	    if (choice1 === "ROCK") {
+	        if (choice2 === "PAPER") {
+	            return "Paper Wins!";
+	        } else if (choice2 === "SCISSORS") {
+	            return "Rock Wins!";
+	        } 
+	    }
+
+	    if (choice1 === "PAPER") {
+	        if (choice2 === "ROCK") {
+	            return "Rock Wins!";
+	        } else if (choice2 === "SCISSORS") {
+	            return "Scissors Wins!";
+	        } 
+	    }
+
+	    if (choice1 === "SCISSORS") {
+	        if (choice2 === "ROCK") {
+	            return "Rock Wins!";
+	        } else if (choice2 === "PAPER") {
+	            return "Scissors Wins!";
+	        } 
+	    }
+
+	    
+	};
+
+	while (!choicesSelected) {
+		makeChoices();
+		if (doChoicesMatch(userChoice,computerChoice)) {
+			alert("The result is a tie, you'll have to try again.")
+		} else {
+			choicesSelected = true;
+		}
+	}
+
+	winner = compare(userChoice,computerChoice);
+
+	alert("The computer chose: " + computerChoice + ".\nYou chose: " + userChoice + ".\n" + winner );
+}
+
+</script>
+
+</body>
+</html>

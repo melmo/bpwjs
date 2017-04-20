@@ -1,0 +1,134 @@
+<html>
+<head>
+	<title>Paper Scissores Rock</title>
+</head>
+<body>
+	<div style="max-width:600px;margin:auto; ">
+        <h1>Rock, Scissors, Paper</h1>
+
+        <h2>Human</h2>
+        <img id="rock" src="rock-hand.svg" onclick="paperScissorsRock('rock')" />
+        <img id="scissors" src="scissors-hand.svg" onclick="paperScissorsRock('scissors')" />
+        <img id="paper" src="paper-hand.svg" onclick="paperScissorsRock('paper')" />
+        
+        <h2>Computer</h2>
+        <img id="computer-rock" src="rock-hand.svg" />
+        <img id="computer-scissors" src="scissors-hand.svg" />
+        <img id="computer-paper" src="paper-hand.svg" />
+
+        <p id="result"></p>
+    </div>
+
+
+<script>
+
+function paperScissorsRock(choice) {
+	var choicesSelected = false;
+	var userChoice = choice.toUpperCase();
+	var result = document.getElementById('result');
+	var count = 0;
+	var computerChoice;
+	var winner;
+
+	var makeChoices = function() {
+		count += 1;
+		computerChoice = Math.random();
+
+		if (computerChoice <= 0.33) {
+		    computerChoice = "ROCK";
+		} else if (computerChoice > 0.33 && computerChoice <= 0.66) {
+		    computerChoice = "PAPER";
+		} else if (computerChoice > 0.66) {
+		    computerChoice = "SCISSORS";
+		} 
+		if (count < 5) {
+			// animate
+			document.getElementById('computer-rock').style.opacity = 0.1;
+            document.getElementById('computer-paper').style.opacity = 0.1;
+            document.getElementById('computer-scissors').style.opacity = 0.1;
+            document.getElementById('computer-' + computerChoice.toLowerCase()).style.opacity = 1.0;
+            setTimeout(makeChoices,400);
+
+		} else {
+			
+			document.getElementById('computer-rock').style.opacity = 0.1;
+	        document.getElementById('computer-paper').style.opacity = 0.1;
+	        document.getElementById('computer-scissors').style.opacity = 0.1;
+
+	        document.getElementById('computer-' + computerChoice.toLowerCase()).style.opacity = 1.0;
+			// select winner function
+		}
+	    
+	}
+
+	var doChoicesMatch = function(choice1, choice2) {
+		if (choice1 === choice2) {
+	        return true;
+	    } else {
+	    	return false;
+	    }
+	}
+
+	var compare = function(choice1, choice2) {
+	    
+	    
+	    if (choice1 === "ROCK") {
+	        if (choice2 === "PAPER") {
+	            return "Paper Wins!";
+	        } else if (choice2 === "SCISSORS") {
+	            return "Rock Wins!";
+	        } 
+	    }
+
+	    if (choice1 === "PAPER") {
+	        if (choice2 === "ROCK") {
+	            return "Rock Wins!";
+	        } else if (choice2 === "SCISSORS") {
+	            return "Scissors Wins!";
+	        } 
+	    }
+
+	    if (choice1 === "SCISSORS") {
+	        if (choice2 === "ROCK") {
+	            return "Rock Wins!";
+	        } else if (choice2 === "PAPER") {
+	            return "Scissors Wins!";
+	        } 
+	    }
+
+	    
+	};
+
+	while (!choicesSelected) {
+		// show the user's choice visually
+		document.getElementById('rock').style.opacity = 0.1;
+        document.getElementById('paper').style.opacity = 0.1;
+        document.getElementById('scissors').style.opacity = 0.1;
+
+        document.getElementById(userChoice.toLowerCase()).style.opacity = 1.0;
+
+		makeChoices();
+
+		if (doChoicesMatch(userChoice,computerChoice)) {
+			result.innerHTML = "The result is a tie, you'll have to try again.";
+			// reset graphics
+			document.getElementById('rock').style.opacity = 1.0;
+        	document.getElementById('paper').style.opacity = 1.0;
+        	document.getElementById('scissors').style.opacity = 1.0;
+        	document.getElementById('computer-rock').style.opacity = 1.0;
+        	document.getElementById('computer-paper').style.opacity = 1.0;
+        	document.getElementById('computer-scissors').style.opacity = 1.0;
+		} else {
+			choicesSelected = true;
+		}
+	}
+	winner = compare(userChoice,computerChoice);
+
+	
+    result.innerHTML = "The computer chose: " + computerChoice + ".\nYou chose: " + userChoice + ".\n" + winner;
+}
+
+</script>
+
+</body>
+</html>
