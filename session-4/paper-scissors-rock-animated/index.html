@@ -41,22 +41,34 @@ function paperScissorsRock(choice) {
 		} else if (computerChoice > 0.66) {
 		    computerChoice = "SCISSORS";
 		} 
-		if (count < 5) {
-			// animate
-			document.getElementById('computer-rock').style.opacity = 0.1;
-            document.getElementById('computer-paper').style.opacity = 0.1;
-            document.getElementById('computer-scissors').style.opacity = 0.1;
-            document.getElementById('computer-' + computerChoice.toLowerCase()).style.opacity = 1.0;
-            setTimeout(makeChoices,400);
+		document.getElementById('computer-rock').style.opacity = 0.1;
+        document.getElementById('computer-paper').style.opacity = 0.1;
+        document.getElementById('computer-scissors').style.opacity = 0.1;
+        document.getElementById('computer-' + computerChoice.toLowerCase()).style.opacity = 1.0;
+		if (count < 10) {
+			
+            setTimeout(makeChoices,200);
 
 		} else {
 			
-			document.getElementById('computer-rock').style.opacity = 0.1;
-	        document.getElementById('computer-paper').style.opacity = 0.1;
-	        document.getElementById('computer-scissors').style.opacity = 0.1;
+			if (doChoicesMatch(userChoice,computerChoice)) {
+				result.innerHTML = "The result is a tie, you'll have to try again.";
+				// reset graphics
+				document.getElementById('rock').style.opacity = 1.0;
+	        	document.getElementById('paper').style.opacity = 1.0;
+	        	document.getElementById('scissors').style.opacity = 1.0;
+	        	document.getElementById('computer-rock').style.opacity = 1.0;
+	        	document.getElementById('computer-paper').style.opacity = 1.0;
+	        	document.getElementById('computer-scissors').style.opacity = 1.0;
+	        	count = 0;
+	        	
+			} else {
 
-	        document.getElementById('computer-' + computerChoice.toLowerCase()).style.opacity = 1.0;
-			// select winner function
+				// select winner function
+				winner = compare(userChoice,computerChoice);
+				result.innerHTML = "The computer chose: " + computerChoice + ".\nYou chose: " + userChoice + ".\n" + winner;
+				
+			}
 		}
 	    
 	}
@@ -99,33 +111,17 @@ function paperScissorsRock(choice) {
 	    
 	};
 
-	while (!choicesSelected) {
-		// show the user's choice visually
-		document.getElementById('rock').style.opacity = 0.1;
-        document.getElementById('paper').style.opacity = 0.1;
-        document.getElementById('scissors').style.opacity = 0.1;
 
-        document.getElementById(userChoice.toLowerCase()).style.opacity = 1.0;
+	document.getElementById('rock').style.opacity = 0.1;
+    document.getElementById('paper').style.opacity = 0.1;
+    document.getElementById('scissors').style.opacity = 0.1;
 
-		makeChoices();
+    document.getElementById(userChoice.toLowerCase()).style.opacity = 1.0;
 
-		if (doChoicesMatch(userChoice,computerChoice)) {
-			result.innerHTML = "The result is a tie, you'll have to try again.";
-			// reset graphics
-			document.getElementById('rock').style.opacity = 1.0;
-        	document.getElementById('paper').style.opacity = 1.0;
-        	document.getElementById('scissors').style.opacity = 1.0;
-        	document.getElementById('computer-rock').style.opacity = 1.0;
-        	document.getElementById('computer-paper').style.opacity = 1.0;
-        	document.getElementById('computer-scissors').style.opacity = 1.0;
-		} else {
-			choicesSelected = true;
-		}
-	}
-	winner = compare(userChoice,computerChoice);
+	makeChoices();
 
+		
 	
-    result.innerHTML = "The computer chose: " + computerChoice + ".\nYou chose: " + userChoice + ".\n" + winner;
 }
 
 </script>
