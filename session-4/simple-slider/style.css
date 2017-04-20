@@ -1,0 +1,35 @@
+.container {
+  width:100%;
+  overflow:hidden;
+}
+
+#slider {
+  left:0;
+  transition:left 500ms ease-in;
+  width:300%;
+  padding-top:35%;
+  position:relative;
+}
+
+.slide {
+  position:absolute;
+  top:0;
+  width:33.33%;
+  height:100%;
+  background-size:cover;
+}
+
+#slide1 {
+  left:0%;
+  background-color:red;
+}
+
+#slide2 {
+  left:33.33%;
+  background-color:green;
+}
+
+#slide3 {
+  left:66.66%;
+  background-color:blue;
+}
