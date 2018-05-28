@@ -1,0 +1,13 @@
+body {
+	background:#eeeeff;
+	font-size:16px;
+}
+
+.main {
+	max-width:600px;
+	margin:30px auto;
+}
+
+#result img {
+	max-width: 100%;
+}

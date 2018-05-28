@@ -9,9 +9,9 @@ Starter kit and a completed demo of a one page website to introduce a person.
 ## 02 If Else Control Flow
 
 - A simple if/else example "Lunch"
-- Starter kit for a decision based game "Monsters"
-- Completed alert/text based version of "Monsters"
-- Completed DOM/image based version of "Monsters" (TODO)
+- Minimal starter kit for a decision based game "Monsters"
+- More complete starter kit alert/text based version of "Monsters"
+- Starter kit for DOM/image based version of "Monsters"
 
 ## 03 Browser Events
 
