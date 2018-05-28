@@ -1,5 +1,4 @@
-# bpwjs
-### Basic Programming with JavaScript
+# bpwjs - Basic Programming with JavaScript 
 
 Example files for up to 16 hours of basic programming instruction.
 
